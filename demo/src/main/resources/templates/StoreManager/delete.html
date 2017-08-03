@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Delete</title> 
+	
+	<link rel="stylesheet"  type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+					<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2>Delete Confirmation</h2>
+	
+	<form method="post" th:action = "@{/StoreManager/Delete/{Id}(Id=${albumId})}">
+		<p th:text = "'Are you sure you want to delete album titled ' + ${title} + '?'"> </p>
+    	<div>
+    	 <input type="submit" value="Delete" /> |
+    	 <a href = "/StoreManager">Back To List</a>
+		</div>
+	</form>
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot</a>
+	</div>
+</body>
+</html>

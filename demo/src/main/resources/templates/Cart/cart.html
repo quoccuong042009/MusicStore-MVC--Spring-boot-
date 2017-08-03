@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Shopping Cart</title> 
+	
+	<link rel="stylesheet" type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	
+	<h3><em>Review</em> your cart:</h3>
+	<form action="/Logon">
+		<div>
+			<input type="submit" value="Check Out >>>"/> 
+		</div>
+	</form>
+<div>
+	<table>
+			<tr>
+				<th>Album Name</th>
+				<th>Price (each)</th>
+				<th>Quantity</th>
+				<th></th>
+			</tr> 
+			
+			<tr th:each="cart : ${carts}">
+				<td th:text ="${cart.Title}">album Title </td>
+				<td th:text ="${cart.Price}">album Price </td>
+				<td th:text ="${cart.Count}">Count</td>
+				<td> <a th:href="@{/ShoppingCart/onRemove/{cartId}(cartId=${cart.CartId})}">Remove from cart</a></td>
+			</tr>
+
+			<tr>
+				<td>Total</td>
+				<td></td>
+				<td></td>
+				<td th:text = "${total}">CartTotal</td>
+			</tr>
+	</table>
+	</div>
+	
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>

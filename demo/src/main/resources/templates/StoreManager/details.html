@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Details</title> 
+	
+	<link rel="stylesheet"  type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+					<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2>Details</h2>
+	
+	<form>
+    <fieldset>
+        <legend>Album</legend>
+        <h3 th:text ="'Genre: ' + ${genre}"></h3>
+        <h3 th:text ="'Artist: ' + ${artist}"></h3>
+        <h3 th:text ="'Title: ' + ${title}"></h3>
+        <h3 th:text ="'Price: $' + ${price}"></h3>
+    </fieldset>
+	</form>
+
+	<div>
+    	<a th:href="@{/StoreManager/Edit/{Id}(Id=${albumId})}">Edit</a> |
+    	<a href = "/StoreManager">Back To List</a>
+	</div>
+
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot</a>
+	</div>
+</body>
+</html>

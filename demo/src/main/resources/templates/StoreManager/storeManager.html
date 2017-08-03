@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title th:text ="${pageTitle}">title</title> 
+	
+	<link rel="stylesheet" type="text/css" href="css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+					<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2 th:text ="${content}">content</h2>
+	
+	<p><a href ="/StoreManager/Create">Create New Album</a></p>
+	
+	<table>
+		<tr>
+			<th>Genre</th>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		
+		<tr th:each="album : ${albums}">
+			<td th:text ="${album.Genre.Name}"> Genre Name </td>
+			<td th:text ="${album.Artist.Name}"> Artist Name </td>
+			<td th:text ="${album.Title}">album Title </td>
+			<td th:text ="${album.Price}">album Price </td>
+			<td>
+				<a th:href="@{/StoreManager/Edit/{Id}(Id=${album.AlbumId})}">Edit</a>|
+				<a th:href="@{/StoreManager/Details/{Id}(Id=${album.AlbumId})}">Details</a>|
+				<a th:href="@{/StoreManager/Delete/{Id}(Id=${album.AlbumId})}">Delete</a>
+			</td>
+		</tr>
+	</table>
+		<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title th:text ="${pageTitle}">title</title> 
+	
+	<link rel="stylesheet" type="text/css" href="/css/Site.css"></link>
+	 
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2>Logon Failed</h2>
+	<h3>Please <a href="/Logon">TRY AGAIN</a> or <a href ="/Register">CREATE AN ACCOUNT</a></h3>
+	
+
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>

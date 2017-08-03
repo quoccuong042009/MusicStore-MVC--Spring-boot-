@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Create</title> 
+	
+	<link rel="stylesheet"  type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2>Create</h2>
+	
+	<form method="post" th:action = "@{/StoreManager/OnCreate}" th:object="${Album}">
+    <fieldset>
+        <legend>Album</legend>
+
+        <div class="editor-label">
+            Genre
+        </div>
+        <div class="editor-field">
+            <select class="form-control" id="genre" name = "g">
+        		<option th:each="genre : ${genres}"
+                		th:text="${genre.Name}"
+                		th:value="${genre.GenreID}"        
+                		>genres</option>
+    		</select>
+        </div>
+
+        <div class="editor-label">
+            Artist
+        </div>
+        <div class="editor-field">
+             <select class="form-control" id="artist" name = "a">
+        		<option th:each="artist : ${artists}"
+                		th:text="${artist.Name}"
+                		th:value="${artist.ArtistId}"
+                		>artist</option>
+    		</select>
+        </div>
+
+        <div class="editor-label">
+            Title
+        </div>
+        <div class="editor-field">
+           	    <input type="text" th:field = "*{Title}"></input>
+                <span th:errors="*{Title}" class = "error">errors</span>
+        </div>
+
+        <div class="editor-label">
+            Price
+        </div>
+        <div class="editor-field">
+                <input type="text" th:field = "*{Price}"></input>
+                <span th:errors="*{Price}" class = "error">errors</span>
+
+        </div>
+        <p>
+            <input type="submit" value="Create New Album" />
+        </p>
+    </fieldset>
+</form>
+
+<div>
+    <a href ="/StoreManager">Back To List</a>
+</div>
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title th:text ="${pageTitle}">title</title> 
+	
+	<link rel="stylesheet"  type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		
+		</ul>
+	</div>
+	
+	<div id = "categories">
+		<ul th:each="genre : ${genres}" style = "list-style-type:none">
+			<li><h3 style ="color :Red"><a th:text ="${genre.name}" th:href="@{/Store/Browse/Genre={genre}(genre=${genre.name})}">genre</a></h3></li>
+		</ul>
+	</div>
+	
+	<h2 th:text ="'Browsing Genre: ' + ${content}">content</h2>
+	
+	
+	<ul th:each="album : ${albums}" id="album-list">
+		<li><img src="/Images/placeholder.gif"/><a th:text ="${album.title}"  th:href="@{/Store/Details/{Id}(Id=${album.AlbumId})}">album</a></li>
+	</ul>
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Order Success</title> 
+	
+	<link rel="stylesheet" type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	<h2>Checkout Complete</h2>
+
+	<p th:test= "'Thanks for your order! Your order number is: ' ${orderId}"></p>
+
+	<p>How about shopping for some more music in our <a href="/">Home</a></p>
+	
+		<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>

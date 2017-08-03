@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title th:text ="${pageTitle}">title</title> 
+	
+	<link rel="stylesheet" type="text/css" href="css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	
+	
+	<h2>Create a New Account</h2>
+	<form action = "#" method = "post" th:action = "@{/Register}" th:object="${User}">
+    <div>
+        <fieldset>
+            <legend>Account Information</legend>
+
+            <div class="editor-label">
+                Username
+            </div>
+            <div class="editor-field">
+                <input type = "text" th:field = "*{Username}"></input>
+                <span th:errors="*{Username}" class = "error">errors</span>
+            </div>
+
+            <div class="editor-label">
+                Email Address
+            </div>
+            <div class="editor-field">
+                <input type="text" th:field = "*{emailAddress}"></input>
+                <span th:errors="*{emailAddress}" class = "error">errors</span>
+            </div>
+
+            <div class="editor-label">
+                Password
+            </div>
+            <div class="editor-field">
+                <input type="password"  th:field = "*{Password}"></input>
+                <span th:errors="*{Password}" class = "error">errors</span>
+            </div>
+
+            <div class="editor-label">
+                Confirm Password
+            </div>
+            <div class="editor-field">
+                <input type="password"  th:field = "*{PasswordConfirmation}"></input>
+                <span th:errors="*{PasswordConfirmation}" class = "error">errors</span>
+            </div>
+
+            <p>
+                <input type="submit" value="Register" />
+            </p>
+        </fieldset>
+    </div>
+	</form>
+	
+	<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>

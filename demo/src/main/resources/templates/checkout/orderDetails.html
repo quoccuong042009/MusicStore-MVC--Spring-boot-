@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" /> 
+	<title>Order Details</title> 
+	
+	<link rel="stylesheet" type="text/css" href="/css/Site.css"></link>
+
+	
+</head>
+<body> 
+	<div id ="header">
+		<h1>SRRING BOOT MVC MUSIC STORE</h1>
+		<ul id = "navlist">
+			<li class = "first"><a href ="/" id="current">Home</a></li>
+			<li><a href = "/Store">Store</a></li>
+			<li><a href = "/ShoppingCart">Cart(<span th:text="${quantity}"></span>)</a></li> 
+			<li><a href="/StoreManager">Admin</a></li>
+		</ul>
+	</div>
+	<h2>Address And Payment</h2>
+
+	<form action = "#" method = "post" th:action = "@{/Order/{Id}(Id=${userId})}" th:object="${OrderDetail}">
+    <fieldset>
+        <legend>Shipping Information</legend>
+        <div class="editor-label">First Name</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{FirstName}"></input>
+                <span th:errors="*{FirstName}" class = "error">errors</span>
+        </div>
+ 		<div class="editor-label">Last Name</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{LastName}"></input>
+                <span th:errors="*{LastName}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">Address</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{Address}"></input>
+                <span th:errors="*{Address}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">City</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{City}"></input>
+                <span th:errors="*{City}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">State</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{State}"></input>
+                <span th:errors="*{State}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">Postal Code</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{PostalCode}"></input>
+                <span th:errors="*{PostalCode}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">Country</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{Country}"></input>
+                <span th:errors="*{Country}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">Phone</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{Phone}"></input>
+                <span th:errors="*{Phone}" class = "error">errors</span>
+        </div>
+        <div class="editor-label">Email Address</div>
+        <div class="editor-field">
+                <input type = "text" th:field = "*{Email}"></input>
+                <span th:errors="*{Email}" class = "error">errors</span>
+        </div>
+        
+    </fieldset>
+    <fieldset>
+        <legend>Payment</legend>
+        <p>We're running a promotion: all music is free with the promo code: "FREE"</p>
+
+        <div class="editor-label">Promo Code</div>
+        <div class="editor-field">
+            <input type="text"></input>
+        </div>
+    </fieldset>
+    
+    <input type="submit" value="Submit Order" />
+	</form> 
+		<div id="footer">
+		built with <a href="http://spring.io/">Spring Boot MVC</a>
+	</div>
+</body>
+</html>
